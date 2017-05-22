@@ -24,15 +24,14 @@
   },
   "files": [
     "src/js/*.js",
-    "src/scss/*.scss",
     "LICENSE",
     "README.md"
   ],
-  "repository": "https://github.com/wearespindle/vue-tabcordion",
+  "repository": "https://github.com/wearespindle/vue-pagination",
   "keywords": [
     "vue",
     "bulma",
-    "tabs"
+    "pagination"
   ],
   "author": "Devhouse Spindle",
   "license": "MIT",
