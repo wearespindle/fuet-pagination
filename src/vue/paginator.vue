@@ -1,6 +1,6 @@
-<nav class="pagination" v-if="renderPages.length > 1">
-    <a class="pagination-previous" :disabled="!previous" @click=fetchData(previous)>{{$t('Previous')}}</a>
-    <a class="pagination-next" :disabled="!next" @click=fetchData(next)>{{$t('Next')}}</a>
+<nav tabindex="-1" class="pagination" v-if="renderPages.length > 1" v-on:keyup.left="fetchData(previous)" v-on:keyup.right="fetchData(next)">
+    <a class="pagination-previous" :disabled="!previous" @click="fetchData(previous)">{{$t('Previous')}}</a>
+    <a class="pagination-next" :disabled="!next" @click="fetchData(next)" >{{$t('Next')}}</a>
     <ul class="pagination-list">
         <template v-if=ellipsisFirst>
             <li @click=fetchData(ellipsisFirst)>
