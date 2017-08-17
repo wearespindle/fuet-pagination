@@ -1,23 +1,25 @@
-<nav tabindex="-1" class="pagination" v-if="renderPages.length > 1" v-on:keyup.left="fetchData(previous)" v-on:keyup.right="fetchData(next)">
-    <a class="pagination-previous" :disabled="!previous" @click="fetchData(previous)">{{$t('Previous')}}</a>
-    <a class="pagination-next" :disabled="!next" @click="fetchData(next)" >{{$t('Next')}}</a>
+<nav tabindex="-1" class="pagination" v-if="renderPages.length > 1"
+    v-on:keyup.left="fetchPreviousPage"
+    v-on:keyup.right="fetchNextPage">
+    <a class="pagination-previous" :disabled="!prevEnabled" @click="fetchPreviousPage">{{$t('Previous')}}</a>
+    <a class="pagination-next" :disabled="!nextEnabled" @click="fetchNextPage" >{{$t('Next')}}</a>
     <ul class="pagination-list">
         <template v-if=ellipsisFirst>
-            <li @click=fetchData(ellipsisFirst)>
+            <li @click=fetchPage(ellipsisFirst)>
                 <a class="pagination-link">{{ellipsisFirst}}</a>
             </li>
             <li class="pagination-ellipsis">...</li>
         </template>
         <li v-for="(n, index) in renderPages">
             <a class="pagination-link"
-                @click=fetchData(n)
+                @click=fetchPage(n)
                 :class="{'is-current': n === currentPage}">
             {{ n }}
             </a>
         </li>
         <template v-if=ellipsisLast>
         <li class="pagination-ellipsis">...</li>
-        <li @click=fetchData(ellipsisLast)>
+        <li @click=fetchPage(ellipsisLast)>
             <a class="pagination-link">{{ellipsisLast}}</a>
         </li>
         </template>
