@@ -1,6 +1,4 @@
-<nav tabindex="-1" class="pagination" v-if="renderPages.length > 1"
-    v-on:keyup.left="fetchPreviousPage"
-    v-on:keyup.right="fetchNextPage">
+<nav tabindex="-1" class="pagination" v-if="renderPages.length > 1">
 
     <router-link class="pagination-previous" v-if="currentPage > 1"
         @click.native="fetchPage(currentPage - 1)" :to="path + '?page=' + (currentPage - 1)">
