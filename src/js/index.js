@@ -41,12 +41,6 @@ module.exports = {
         }
     },
     methods: {
-        fetchNextPage: function(e) {
-            if (!this.nextEnabled) return
-            this.currentPage += 1
-            this.fetchPage(this.currentPage)
-        },
-
         fetchPage: async function(pageNumber) {
             if (!pageNumber) pageNumber = this.currentPage
             else {
@@ -55,16 +49,7 @@ module.exports = {
 
             this.updatePagination(this.currentPage)
             await this.method({page: pageNumber, path: this.path})
-            const route = this.$router.resolve(this.path).route
-            this.$router.push({ name: route.name, query: {page: pageNumber}})
         },
-
-        fetchPreviousPage: function(e) {
-            if (!this.prevEnabled) return
-            this.currentPage -= 1
-            this.fetchPage(this.currentPage)
-        },
-
         /**
         * Update the pagination component state.
         * @param {Number} currentPage - Used to determine the next page.

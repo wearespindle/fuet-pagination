@@ -1,27 +1,46 @@
 <nav tabindex="-1" class="pagination" v-if="renderPages.length > 1"
     v-on:keyup.left="fetchPreviousPage"
     v-on:keyup.right="fetchNextPage">
-    <a class="pagination-previous" :disabled="!prevEnabled" @click="fetchPreviousPage">{{$t('Previous')}}</a>
-    <a class="pagination-next" :disabled="!nextEnabled" @click="fetchNextPage" >{{$t('Next')}}</a>
+
+    <router-link class="pagination-previous" v-if="currentPage > 1"
+        @click.native="fetchPage(currentPage - 1)" :to="path + '?page=' + (currentPage - 1)">
+        {{$t('Previous')}}
+    </router-link>
+    <router-link v-else disabled="disabled" class="pagination-previous" :to="path + '?page=1'">
+        {{$t('Previous')}}
+    </router-link>
+
+    <router-link class="pagination-next" v-if="currentPage < pageCount"
+        @click.native="fetchPage(currentPage + 1)" :to="path + '?page=' + (currentPage + 1)">
+        {{$t('Next')}}
+    </router-link>
+    <router-link v-else disabled="disabled" class="pagination-previous" :to="path + '?page=' + (currentPage + 1)">
+        {{$t('Next')}}
+    </router-link>
+
     <ul class="pagination-list">
-        <template v-if=ellipsisFirst>
-            <li @click=fetchPage(ellipsisFirst)>
-                <a class="pagination-link">{{ellipsisFirst}}</a>
+        <template v-if="ellipsisFirst">
+            <li>
+                <router-link class="pagination-link" @click.native=fetchPage(ellipsisFirst) :to="path + '?page=' + ellipsisFirst">
+                    {{ellipsisFirst}}
+                </router-link>
             </li>
             <li class="pagination-ellipsis">...</li>
         </template>
+
         <li v-for="(n, index) in renderPages">
-            <a class="pagination-link"
-                @click=fetchPage(n)
-                :class="{'is-current': n === currentPage}">
-            {{ n }}
-            </a>
+            <router-link class="pagination-link" @click.native=fetchPage(n) :class="{'is-current': n === currentPage}" :to="path + '?page=' + n">
+                {{ n }}
+            </router-link>
         </li>
-        <template v-if=ellipsisLast>
-        <li class="pagination-ellipsis">...</li>
-        <li @click=fetchPage(ellipsisLast)>
-            <a class="pagination-link">{{ellipsisLast}}</a>
-        </li>
+
+        <template v-if="ellipsisLast">
+            <li class="pagination-ellipsis">...</li>
+            <li>
+                <router-link class="pagination-link" @click.native=fetchPage(ellipsisLast) :to="path + '?page=' + ellipsisLast">
+                    {{ellipsisLast}}
+                </router-link>
+            </li>
         </template>
     </ul>
 </nav>
