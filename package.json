@@ -1,10 +1,10 @@
 {
-  "name": "vue-paginator2",
+  "name": "fuet-pagination",
   "version": "1.0.4",
-  "description": "A simple paginator component for Vue2.",
+  "description": "A simple pagination component for Vue 2.",
   "main": "src/js/index.js",
   "peerDependencies": {
-    "bulma": ">=0.2",
+    "bulma": ">=0.5",
     "vue": ">=2"
   },
   "watch": {
@@ -27,10 +27,10 @@
     "LICENSE",
     "README.md"
   ],
-  "repository": "https://github.com/wearespindle/vue-paginator2",
+  "repository": "https://github.com/wearespindle/fuet-pagination",
   "keywords": [
     "vue",
-    "bulma",
+    "fuet",
     "pagination"
   ],
   "author": "Devhouse Spindle",
@@ -39,8 +39,5 @@
     "eslint": "^4.4.1",
     "eslint-plugin-sort-class-members": "^1.2.0",
     "npm-watch": "^0.1.9"
-  },
-  "dependencies": {
-    "mini-querystring": "^1.0.2"
   }
 }

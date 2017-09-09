@@ -1,12 +1,9 @@
-const template = require('./templates')
+const templates = require('./templates')
 
 
 /**
- * Vue component for pagination that works well with DRF's default
- * pagination style.
- * @param {Object} template - The template to use with this component.
+ * Simple Vue pagination component.
  * @returns {Object} - The Vue component attributes.
- * @class
  */
 module.exports = {
     /**
@@ -117,7 +114,6 @@ module.exports = {
             }
 
             this.currentPage = currentPage
-
             this.renderPages = renderPages
         },
     },
@@ -126,8 +122,8 @@ module.exports = {
         'method',
         'path',
     ],
-    render: template.paginator.r,
-    staticRenderFns: template.paginator.s,
+    render: templates.pagination.r,
+    staticRenderFns: templates.pagination.s,
     watch: {
         count: function(newCount) {
             this.currentPage = parseInt(this.$router.currentRoute.query.page) || 1
