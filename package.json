@@ -18,8 +18,8 @@
     }
   },
   "scripts": {
-    "vue": "fuet -c -i 'src/vue/*.vue' -p src vue -o src/js/templates.js",
-    "prepublish": "fuet -c -i 'src/vue/*.vue' -p src vue -o src/js/templates.js",
+    "vue": "fuet -e -i 'src/vue/*.vue' -p src vue -o src/js/templates.mjs",
+    "prepublish": "fuet -e -i 'src/vue/*.vue' -p src vue -o src/js/templates.mjs",
     "watch": "npm-watch"
   },
   "files": [
